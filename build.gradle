@@ -1,0 +1,41 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.5'
+	id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'e.grepp.project1'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+//jar {
+//	enabled = false
+//}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-tomcat'
+
+	implementation group: 'org.springframework.boot', name: 'spring-boot-maven-plugin', version: '3.3.5'
+
+	// lombok
+	compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.34'
+	annotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.34'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
